@@ -1,9 +1,8 @@
 import { hrtime } from 'node:process';
 
-const start = hrtime.bigint();
+const start = hrtime();
 
 export function getTime() {
-  const now = hrtime.bigint();
-  const delta = now - start;
-  return Number(delta) * 1e-9;
+  const delta = hrtime(start);
+  return delta[0] + delta[1] * 1e-9;
 }
